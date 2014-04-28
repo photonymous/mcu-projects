@@ -1,9 +1,30 @@
-mcu-projects
-============
+Things to install:
+==================
 
-This is my public repository for sharing my microcontroller projects. 
-I am mostly focused on Atmel AVR ATTiny and Arduino.
+arduino-mk
+arduino-core
+arduino
+binutils-avr
+gcc-avr (exe = avr-gcc and avr-g++)
+avr-libc
+simulavr
+avrdude (maybe gets installed with arduino)
+flex
+bison
+byacc
+libusb-dev
 
-I like simple makefile projects, and my core tools consist of avr-gcc and 
-avrdude. Most of my projects will be along these lines.
+
+Add yourself to some groups:
+============================
+
+sudo usermod -a -G tty username
+sudo usermod -a -G dialout username
+
+Finally:
+========
+
+Log out and back in
+Should be ready to go!
+...go into one of the examples and type "make" followed by "make flash" or "make upload"
 
