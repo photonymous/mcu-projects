@@ -66,7 +66,8 @@ private:
    uint8_t m_arrAboveWeights[N_OUTPUTS/8];
 
 public:
-
+   BueNeuron();
+   uint32_t process(uint8_t* arrLayer0, uint8_t* arrLayer1, uint8_t* arrLayer2);
 };
 
 //==========================================================
@@ -93,15 +94,13 @@ private:
    
    int m_iInputRate;
    int m_iRateReduction;
-   uint8_t* m_arrInputs;
-   uint8_t* m_arrOutputs;
    
 public:
    BueNet32();
    
-   void init(int iInputRate, int iRateReduction, uint8_t* arrInputs, uint8_t* arrOutputs);
+   void init(int iInputRate, int iRateReduction);
 
-   bool process();
+   void process(uint8_t* arrInputs, uint8_t* arrOutputs);
 };
 
 
