@@ -24,22 +24,37 @@ private:
    static const int SHIFT1 = 6;
    static const int SHIFT2 = 21;
    static const int SHIFT3 = 7;
+   
+   int m_iIndex;
    uint32_t m_iState;
    uint32_t m_iSeed;
    
 public:
    XORShift32(uint32_t iSeed) :
       m_iSeed(iSeed),
-      m_iState(iSeed)
+      m_iState(iSeed),
+      m_iIndex(0)
    {}
    
-   inline uint32_t next()
+   inline uint32_t next32()
    {
       uint32_t iRetVal = m_iState;
       m_iState = m_iState ^ (m_iState << SHIFT1);
       m_iState = m_iState ^ (m_iState >> SHIFT2);
       m_iState = m_iState ^ (m_iState << SHIFT3);
       return iRetVal;
+   }
+   
+   inline uint8_t next8()
+   {
+		uint8_t iRetVal = *(((uint8_t*)(&m_iState)) + m_iIndex);
+		m_iIndex++;
+   	if(m_iIndex == 4)
+		{
+			next32();
+			m_iIndex = 0;
+		}
+		return iRetVal;
    }
 };
 
